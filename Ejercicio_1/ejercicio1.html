@@ -1,0 +1,61 @@
+<html>
+        <head>
+                <title>Login</title>
+                <script>
+
+            window.onload = carga;
+
+                function carga () {
+                    //alert("Se termino de cargar todo");
+                    //document.getElementById("btn").onclick = validaUsuario;
+
+                    //var boton = document.getElementById("btn");
+                    //boton.onclick = validarUsuario;
+
+                    document.getElementById("btn").addEventListener("click",validarUsuario);
+                    document.getElementById("btn").addEventListener("click",
+                    function(){
+                        alert("otra funcion")
+                        });
+                  //  document.getElementById("btn").removeEventListener("click",validarUsuario);
+                    
+
+                }
+                
+        
+                    
+                function validarUsuario() {
+                        var nombre= 'fausto';
+                        var Contrasena= 'maraca';
+
+                        if(document.getElementById("usr").value==nombre&& document.getElementById("pass").value==Contrasena){
+                            alert("cheto flow");
+
+                        }
+                        else
+                        {
+                            alert('sos un verga');
+                        }
+                    }
+
+                
+                    //alert(document.getElementById("usr").value);
+                </script>
+<body>
+ <fieldset>   
+     <legend>Login</legend>
+        Usuario:
+    <br>
+        <input id="usr" type="text" name="txtUsr">
+    <br>
+        Contraseña: 
+    <br>
+    <input id="pass" type="password" name="txtUsr"><br>
+    <input type="checkbox" name="Recordar cuenta" checked>Recordar Cuenta<br>
+    <input type="button" id="btn" value="Enviar" >
+    <input type="reset" value="Limpiar">
+    <br>
+</fieldset>
+
+</body>
+</html>
