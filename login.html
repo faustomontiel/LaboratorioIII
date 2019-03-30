@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+	<script>
+        
+    window.onload = carga;
+
+    function carga(){
+    document.getElementById("btn").addEventListener("click",validarUsuario);
+    document.getElementById("btn").addEventListener("click",
+            function(){
+                alert("otra funcion");
+                });
+    document.getElementById("btn").removeEventListener("click",validarUsuario);
+        
+    }
+
+
+
+ function validarUsuario(){
+            console.log("Validando usuario");
+            var usuario = document.getElementById("usr");
+            var password = document.getElementById("pass");
+            console.log(usuario.value);
+            if(usuario.value ==="asd" && password.value==='123'){
+                alert("Son correctas");
+            }else{
+                alert("Incorrecto");
+            }
+
+        }
+
+        
+    
+	</script>
+</head>
+
+<body>
+<form>
+    <fieldset>
+        <legend>Login:</legend>
+        Usuario: <br/>
+        <input id="usr" type="text" name="txtUsr"/><br/>
+        Contraseña: <br/>
+        <input id="pass" type="password" name="txtPass"/><br/>
+		<input type="checkbox" name="cbRecordar" checked/>Recordar usar y contraseña<br/>
+        <input type="button" id="btn" value="Enviar"  />
+        <input type="reset" value="Limpiar"/>
+    </fieldset>
+
+</form>
+    
+</body>
+
+</html>
