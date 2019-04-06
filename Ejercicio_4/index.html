@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 4</title>
+	<script src="./funciones.js" ></script>
+
+	<link rel="stylesheet" href="./hojaEstilos.css">
+</head>
+<body>
+	
+	<div id="contAgregar" class="contenedor" hidden>
+	<form >
+  <div class="form-group" >
+  	<input type="button" name="btnCerrar" id="btnCerrar" value="X" class="cerrar">
+	<br>
+	Nombre
+	<br>
+	<input type="text" class="sinError"  name="NombreApellido" id="Nombre" placeholder="Tu nombre...">
+	<br>
+	Apellido
+	<br>
+	<input type="text" class="sinError" name="NombreApellido" id="Apellido" placeholder="Tu apellido...">
+	<br>
+	<br>
+	<br>
+	<input type="button" id="btnGuardar" value="Guardar" class="verde">
+	<br>
+	<br>
+</div>
+</form>
+</div>
+	<input type="button" name="Agregar" id="btnAgregar" value="Agregar">
+	<br>
+	<br>
+	<label style="font-size: 30px" class="negrita">Lista de personas</label> 
+	<table id="IdTabla">
+			<thead style="background-color: green">
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Accion</th>
+			</thead>
+			
+
+			<tbody id="idTbody">
+			<td>Juan</td>	
+			<td>perez</td>	
+			<td><a href="#">Borrar</a></td>
+			</tbody>
+	</table>
+<form>
+</body>
+</html>

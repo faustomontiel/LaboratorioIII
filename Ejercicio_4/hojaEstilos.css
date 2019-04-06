@@ -1,0 +1,94 @@
+table{
+	border-collapse: collapse;
+	width: 100%;
+}
+th,td{
+	text-align: left;
+	padding: 8px;
+}
+th{
+	background-color: lightseagreen;
+	color: white;
+}
+tr:nth-child(even){
+	background-color: #f2f2f2
+}
+.negrita{
+	font-weight: bold;
+	font-size: 15pt;
+	margin: 300px:;
+}
+.sinError{
+	border: 4px solid #ccc;
+}
+.error{
+	border: 4px solid red;
+}
+.contenedor{
+
+	position: fixed;
+	width: 50%;
+	bottom: 25%;
+	right: 25%;
+	border-radius: 5px;
+	background-color: lightgrey;
+	padding: 20px;
+	box-sizing: border-box;
+	animation-name:aparecer ;
+	animation-duration: 4s;
+
+}
+@keyframes aparecer{
+	from {opacity:0}
+	to{opacity:1}
+}
+@keyframes desaparecer{
+	from {opacity:1}
+	to{opacity:0}
+}
+input[type='text']
+{
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+.cerrar{
+	background-color: red;
+	color: white;
+	padding: 14px 20px;
+	border: nmone;
+	display: block;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	border-radius: 4px;
+	cursor:pointer;
+
+}
+/*
+input[type='button']
+{	
+	width: 50%;
+	margin: 50px 0px 50px 0px;
+	padding-right: 0px;
+
+	padding: 0px 25px 0px 0px;
+	color: white;
+	font-size: 15pt;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+}
+input[type='button']:hover
+{	
+	background-color:green; 
+}*/
+.verde{
+	background-color: green;
+	width: 125px;
+	height: 50px;
+}
