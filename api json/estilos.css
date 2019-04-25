@@ -1,0 +1,67 @@
+.boton
+{
+				color: white;
+				background-color: green;
+				width: 225px;
+				height: 50px;
+}
+			.cerrar
+			{
+				color: white;
+				background-color: red; 
+				width: 9%;
+				padding: 16px;
+				position: absolute;
+				right: 1px;
+				top: 1px;
+			}
+			@keyframes aparecer
+			{
+				from{opacity: 0}
+				to{opacity: 1}
+			}
+			input[type='text']
+			{
+				width: 100%;
+				padding: 12px 20px;
+				display: inline-block;
+				border-radius: 4px;
+				box-sizing: border-box;
+			}
+			th
+			{
+				background-color: lightblue;
+				color: white;
+			}
+			tr:nth-child(even)
+			{
+				background-color: lightgrey;
+			}
+			.tabla
+			{
+				border-collapse: collapse;
+				text-align: left;
+				font-size: 15pt;
+			}
+			.contenedor
+			{
+				position: fixed;
+				width: 50%;
+				border-radius: 5px;
+				background-color: lightgrey;
+				padding: 20px;
+				box-sizing: border-box;
+				margin: 20px auto;
+				left: 25%;
+				top: 100px;
+				animation-name: aparecer;
+				animation-duration: 4s;
+			}
+			.sinError
+			{
+				border: 1px solid #ccc;
+			}
+			.error
+			{
+				border: 1px solid red;
+			}

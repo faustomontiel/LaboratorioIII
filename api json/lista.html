@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>Lista</title>
+        <script src="./funciones.js"></script>
+        <link rel="stylesheet" href="./estilos.css">
+	</head>
+	<body>
+		<form class = "contenedor" hidden id="contAgregar">
+			<input type="button" value="x" class="cerrar" id="btnCerrar"  ><br>
+			Nombre<br>
+			<input type="text" placeholder="Tu nombre..." class="sinError" size="40" id="nombre"><br>
+			Apellido<br>
+			<input type="text" placeholder="Tu apellido..." class="sinError" size="40" id="apellido"><br><br>
+			<input type="button" value = "Guardar" class="boton"><br>
+		</form>
+			<input type="button" id="btnAgregar" value="Agregar"  >
+			<h2>Lista de personas</h2>
+		<table style="width: 100%"  border = "0" class = "tabla">
+           	<thread>
+            	<th>Nombre</th>
+            	<th>Apellido</th>
+            	<th>Telefono</th>
+            	<th>Fecha</th>
+           		<th>Accion</th>
+           	</thread>
+           	<tbody id = "tbody">
+           		
+           	</tbody>
+         </table>
+	</body>
+</html>
