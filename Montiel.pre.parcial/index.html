@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./entidades/persona.js"></script>
+    <script src="./entidades/empleado.js"></script>
+    <script src="./entidades/manejadora.js"></script>
+    <link rel="stylesheet" href=".\node_modules\bootstrap\dist\css\bootstrap.min.css">
+    <title>Empleados</title>
+</head>
+<body>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="top: auto">
+                    <a class="navbar-brand" href="#" id="aMostrar">Mostrar</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                      <ul class="navbar-nav">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Formulario</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ver
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a type="dropdown-item" data-toggle="modal" data-target="#modalPromedio" class="dropdown-item" href="#">Promedio</a>
+                              <a type="dropdown-item" data-toggle="modal" data-target="#modalFiltrar" class="dropdown-item" href="#">Filtrar</a>
+                              <a class="dropdown-item" href="#" id="soloNomApellido">Solo nombre y apellido</a>
+                            </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+                <br>
+                <div class="container-fluid main" style="top: auto">
+                        <div class="row">
+                            <div class="col-3">
+                                <form>
+                                    <h3 id="headerForm">Alta empleado</h3>
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre..">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="apellido">Apellido</label>
+                                            <input type="text" class="form-control" id="inputApellido" placeholder="Apellido..">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="edad">Edad</label>
+                                            <input type="number" class="form-control" id="inputEdad" placeholder="Edad..">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="legajo">Legajo</label>
+                                            <input type="number" class="form-control" id="inputLegajo" placeholder="Legajo..">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="horario">Horario</label>
+                                        <select class="form-control" id="selectHorario">
+                                        <option>Mañana</option>
+                                        <option>Tarde</option>
+                                        <option>Noche</option>
+                                        </select>
+                                    </div>
+                                    <button id="btnCancelar" type="button" class="btn btn-danger">Cancelar</button>
+                                    <button id="btnAgregar" type="button" class="btn btn-success">Agregar</button>
+                                </form>
+                            </div>
+                
+                            <div  id="divListado" class="col-9" style="top: auto"> 
+                                    <h3>Lista empleados</h3>
+                                    <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Apellido</th>
+                                                <th scope="col">Edad</th>
+                                                <th scope="col">Legajo</th>
+                                                <th scope="col">Turno</th>
+                                                <th scope="col">Accion</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="tBody">
+                                            </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal fade" id="modalPromedio" role="dialog">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Promediar turno</h5>
+                            <button id="btnCerrarPromedio" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <select class="form-control" id="selectPromedio">
+                              <option>Mañana</option>
+                              <option>Tarde</option>
+                              <option>Noche</option>
+                              </select>
+                              <p id="pPromedio"></p>
+                          </div>
+                          <div class="modal-footer">
+                            <button id="btnPromedio" type="button" class="btn btn-primary">Calcular</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                
+                    <div class="modal fade" id="modalFiltrar" role="dialog">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Filtrar</h5>
+                            <button id="btnCerrarFiltrar" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <select class="form-control" id="selectFiltrar">
+                              <option>Mañana</option>
+                              <option>Tarde</option>
+                              <option>Noche</option>
+                              </select>
+                          </div>
+                          <div class="modal-footer">
+                            <button id="btnFiltrar" type="button" class="btn btn-primary">Filtrar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  
+                </body>
+</html>
