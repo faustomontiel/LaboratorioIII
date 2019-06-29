@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./estilos/estilos.css">
+    <script src="./entidades/vehiculo.js"></script>
+    <script src="./entidades/auto.js"></script>
+    <script src="./entidades/camioneta.js"></script>
+    <script src="./entidades/funciones.js"></script>
+    <link rel="stylesheet" href=".\node_modules\bootstrap\dist\css\bootstrap.min.css">
+    <title>Vehiculos</title>
+
+</head>
+
+<body onload="vehiculoName.Funciones.OnLoad()">
+<body>
+    <div class="container-fluid main">
+        
+        <div class="container" id="formulario"> 
+                <form  >
+                    <h3 id="headerForm">Alta vehiculo</h3>
+                    <div class="form-group">
+                        <label for="id">ID</label>
+                        <input type="text" class="form-control" id="idf" readonly>
+                    </div>
+                    <div class="form-group">
+                            <label for="apellido">Marca:</label>
+                            <input type="text" class="form-control" id="marca" placeholder="Marca..">
+                    </div>
+                    <div class="form-group">
+                            <label for="edad">Modelo:</label>
+                            <input type="text" class="form-control" id="modelo" placeholder="Modelo..">
+                    </div>
+                    <div class="form-group">
+                            <label for="edad">Precio:</label>
+                            <input type="number" class="form-control" id="precio" placeholder="Precio..">
+                    </div>
+                    <div class="form-group">
+                        <label for="horario">Tipo</label>
+                        <select class="form-control" id="selectTipo">
+                        <option>Camioneta</option>
+                        <option>Auto</option>
+                        </select>
+                    </div>
+                    <button id="btnCerrrar" type="button" class="btn btn-danger">Cerrar</button>
+                    <button id="btnAgregar" type="button" class="btn btn-success" onclick="vehiculoName.Funciones.Alta()">Agregar</button>
+                </form>
+</div>
+
+        <div class="container">
+                <h3>Filtros</h3>
+                <br>
+            </div>
+        <div class="row marginRow">
+            <hr>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <label for="txtFiltro" id="lblTxtFiltro">Filtrar por: </label>
+                <select class="form-control" id="selectVehiculo">
+                        <option>Auto</option>
+                        <option>Camioneta</option>>
+                        </select>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <label for="Promedio" id="lblPromedio">Promedio de precio: </label>
+                <input type="text" id="txtPromedio" name="Promedio"  class="form-control" readonly>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <button name="btnCalculo" id="btnCalculo" class="btn btn-info">Calcular Promedio</button>
+            </div>
+            <hr>
+        </div>
+        <br>
+        <div class="container" >
+            <hr>
+            <h3>Campos Mostrados, Tildar los campos a mostrar.</h3>
+        </div>
+        <br>
+        <div class="row marginRow">
+            <label>
+                <input type="checkbox" name="mostrarID" id="mostrarID" value="" checked onchange="vehiculo.Funciones.Checkbox_OnChange()">ID</label>
+            <label>
+                <input type="checkbox" name="mostrarMarca" id="mostrarMarca" value="" checked onchange="vehiculo.Funciones.Checkbox_OnChange()">Marca</label>
+            <label>
+                <input type="checkbox" name="mostrarModelo" id="mostrarModelo" value="" checked onchange="vehiculo.Funciones.Checkbox_OnChange()">Modelo</label>
+            <label>
+                <input type="checkbox" name="mostrarPrecio" id="mostrarPrecio" value="" checked onchange="vehiculo.Funciones.Checkbox_OnChange()">Precio</label>
+        
+            <hr>
+        </div>
+        <br>
+        <div  id="divListado" style="top: auto"> 
+                <h3>Lista Vehiculos</h3>
+                <table class="table" id="tabla">
+                        
+                </table>
+        </div>
+        
+</body>
+
+</html>
