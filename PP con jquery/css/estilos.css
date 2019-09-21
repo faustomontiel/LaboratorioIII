@@ -1,0 +1,118 @@
+table
+{
+	width: 100%;
+	margin-top: 100px;
+}
+
+th
+{
+	border-collapse: collapse;
+	background-color: green;
+	color: white;
+	padding: 8px;
+}
+
+tr:nth-child(even)
+{
+	background-color: lightgrey; 
+}
+
+td
+{
+	text-align: left;
+	padding: 8px;
+}
+
+.modificar
+{
+	background-color: green;
+	cursor: pointer;
+	border-radius: 8px;
+	color: white;
+	font-size: 15px;
+	font-size: 15px;
+	height: 45px;
+	width: 150px;
+}
+
+.modificar:hover
+{
+	background-color: #06AF0E;
+}
+
+.eliminar
+{
+	background-color: red;
+	cursor: pointer;
+	border-radius: 8px;
+	color: white;
+	height: 45px;
+	width: 150px;
+}
+
+.eliminar:hover
+{
+	background-color: rgb(243, 66, 56);
+}
+
+.cerrar
+{
+	background-color: red;
+	color: white;
+	float: right;
+}
+
+@keyframes aparecer
+{
+	from {opacity: 0}
+	to {opacity: 1}
+}
+
+div
+{
+	border-radius: 5px;
+	background: lightgrey;
+	width: 400px;
+	padding: 20px;
+	position: absolute;
+	right: 35%;
+	top: 25%;
+	animation-name: aparecer;
+	animation-duration: 2s;
+}
+
+.fondo 
+{
+    position:fixed;
+    padding:0;
+	margin:0;
+	text-align: center;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.5);
+}
+
+.loader 
+{
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 80px;
+  height: 80px;
+  margin-top: 10%;
+  margin-right: 10%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin 
+{
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.conError
+{
+	border: 4px solid red;
+}

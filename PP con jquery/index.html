@@ -1,0 +1,57 @@
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Persoas</title>
+		<link rel="stylesheet" type="text/css" href="./css/estilos.css">
+		<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/logica.js"></script>
+	</head>
+
+	<body>
+		<div id="div" hidden>
+		
+		<button id="btnCerrar" class="cerrar">X</button>
+
+		<p>Nombre:</p>
+	 	<input type="text" placeholder ="Nombre" id="nombre">
+
+		<p>Cuatrimestre:</p>
+         <select id="cuatrimestre" disabled=true>
+            <option value=1>Primero</option>
+            <option value=2>Segundo</option>
+            <option value=3>Tercero</option>
+            <option value=4>Cuarto</option>
+          </select>
+
+	 	<p>Fecha:</p>
+	 	<input type="date" placeholder ="Fecha" id="fecha">
+
+	 	<p>Turno:</p>
+        <input type="radio" id="turnoM" name="turno" checked=true>Mañana</br>
+        <input type="radio" id="turnoN" name="turno">Noche</br>
+
+        <button id="btnModificar" class="modificar">Modificar</button>
+         
+        <button id="btnEliminar" class="eliminar">Eliminar</button>
+
+		</div>
+		
+		<table>
+			<tr>
+				<th hidden>Id</th>
+				<th>Nombre</th>
+				<th>Cuatrimestre</th>
+				<th>FechaFinal</th>
+				<th>Turno</th>
+			</tr>
+			<tbody id="tbody"></tbody>
+        </table>
+        
+        <div id="fondo" class="fondo" hidden>
+            <div class="loader"></div>
+        </div>
+
+	</body>
+
+</html>

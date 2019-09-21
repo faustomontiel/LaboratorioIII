@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Lista</title>
+        <script src="./js/archivos.js"></script>
+        <link rel="stylesheet" href="./css/estilos.css">
+	</head>
+	<body>
+		<form class = "contenedor" hidden id="contMostrar">
+			<input type="button" value="x" class="cerrar" id="btnCerrar"><br>
+			Nombre<br>
+			<input type="text"  class="sinError" size="40" id="nombre"><br>
+			Fecha<br>
+			<input type="text"  class="sinError" size="40" id="fecha"><br>
+			Turno<br>
+			<input type="text"  class="sinError" size="40" id="turno"><br>
+			<input type="button" value = "Modificar" id="btnMostrar" class="boton"><br>
+		</form>
+			<h2>Lista de materias</h2>
+		<table style="width: 100%"  border = "0" class = "tabla">
+           	<thread>
+            	<th>Id</th>
+            	<th>Nombre</th>
+            	<th>Cuatrimestre</th>
+            	<th>Fecha Final</th>
+           		<th>Turno</th>
+           	</thread>
+           	<tbody id = "tbody">
+           		
+           	</tbody>
+         </table>
+	</body>
+</html>

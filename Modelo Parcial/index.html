@@ -1,9 +1,27 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body>
-	
-</body>
+    <head>
+        <title>Redireccionado</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./css/estilos.css">
+		<script type="text/javascript" src="./logica/index.js"></script>
+    </head>
+    <body>
+        <button id="btnPostear">Nuevo post</button>
+        <div id="div" hidden class="formulario">
+            <button id="btnCerrar" class="cerrar">X</button>
+            <input id="titulo" placeholder="Titulo">
+            <input id="header" placeholder="Header">
+            <input id="texto" placeholder="Texto">
+            <button id="btnAceptar">Aceptar</button>
+        </div>
+        <table>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+
+        <div id="fondo" class="fondo" hidden>
+            <div class="loader"></div>
+        </div>
+
+    </body>
 </html>

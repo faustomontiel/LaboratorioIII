@@ -1,22 +1,16 @@
-    <!DOCTYPE html>
-    <html>
+<html>
     <head>
-        <title>Document</title>
-        <script src="./funciones.js"></script>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="./css/estilos.css">
+		<script type="text/javascript" src="./logica/login.js"></script>
     </head>
     <body>
-        <fieldset>   
-     <legend>Login</legend>
-        Usuario:
-    <br>
-        <input placeholder="Usuario" id="usr" type="text" name="txtUsr">
-    <br>
-        Contraseña: 
-    <br>
-    <input placeholder="password" id="pass" type="password" name="txtUsr"><br>
-    <input type="button" id="btn" value="Enviar">
-    <input type="reset" value="Limpiar">
-    <br>
-</fieldset>
+        <div>
+            <h2>Ingreso</h2>
+            <input type="text" placeholder ="Email" id="email"></br>
+            <input type="password" placeholder ="Password" id="password"></br>
+            <button id="btnLogin">Login</button>
+        </div>
     </body>
-    </html>
+</html>

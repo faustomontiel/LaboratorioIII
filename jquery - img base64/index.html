@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+
+    <script>
+       
+        $(document).ready(function(){
+
+            
+           
+            $("#btn").click(function(){
+
+                $.get("http://localhost:3000/personas",
+                 function(data, status){
+                     
+                    alert("Data: " + data + "\nStatus: " + status);
+                    console.log(data);
+                });
+            });
+
+            var obj = {
+                        nombre: $("#nomb").val(),
+                        apellido: "Ramos",
+                        sexo: "Male",
+                        fecha: "1988-05-16"
+                    };
+
+            $(".btnPost").click(function(){
+                $.post("http://localhost:3000/nuevaPersona",
+                obj
+                   ,
+                    function(data, status){
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+            });
+
+            $("input").change(function(){
+                
+                if (this.files && this.files[0]) {
+    
+                    var fReader= new FileReader();
+                    
+                    fReader.addEventListener("load", function(e) {
+                      console.log(e.target.result);
+                      $("#iAvatar").attr("src",e.target.result);
+                    }); 
+                    
+                    fReader.readAsDataURL( this.files[0] );
+                }
+            });
+        });
+
+       
+                
+
+
+    </script>
+</head>
+<body>
+    <button id="btn">Llamar al get</button>
+    <button class="btnPost">Ejecutar Post</button>
+
+<br><br><br>
+    ------------------------------------------------
+    <br><br><br>
+    <img id="iAvatar" src="data:image/png;base64,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" height="150">
+    
+    <input type="file" id="avatar" name="avatar"
+        accept="image/png, image/jpeg" />
+    
+</body>
+</html>

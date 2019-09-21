@@ -1,0 +1,337 @@
+<html>
+	<head>
+		<title>CargaAjaxNodos</title>
+		<script>
+
+		var xml = new XMLHttpRequest();
+		var tbody = document.querySelector('tbody');
+		window.addEventListener('load',listar);
+
+		function callback() 
+		{
+			if(xml.readyState === 4)
+			{
+				if (xml.status === 200) 
+				{
+	    		 	var res = xml.responseText;
+	     		 	var obj = JSON.parse(res);
+	     		 	var miTabla = document.getElementById('tbody');
+	     
+	    		 	for (var i=0;i<obj.length;i++)
+	   			 	{
+	   			 		var nodoTr = document.createElement("tr");
+	     		 		var nodoTd1 = document.createElement("td");
+	     		 		var nodoTd2 = document.createElement("td");
+	     		 		var nodoTd3 = document.createElement("td");
+	     		 		var nodoTd4 = document.createElement("td");
+	     		 		var nodoTd5 = document.createElement("td");
+	     		 		var nodoTd6 = document.createElement("td");
+	     		 		var nodoNombre;
+	     		 		var nodoApellido;
+	     		 		var nodoTelefono;
+	     		 		var nodoFecha;
+	     		 		var nodoBorrar = document.createTextNode("borrar");
+	     		 		var nodoModificar = document.createTextNode("Modificar");
+	     		 		var nodoABor = document.createElement("a");
+	     		 		var nodoAMod = document.createElement("a");
+
+	     		 		nodoABor.setAttribute('href', "#");
+	     		 		nodoABor.addEventListener("click", Borrar);
+	     		 		nodoABor.appendChild(nodoBorrar);
+
+	     		 		nodoAMod.setAttribute('href', "#");
+	     		 		nodoAMod.addEventListener("click", Modificar);
+	     		 		nodoAMod.appendChild(nodoModificar);
+
+	   			 		nodoNombre = document.createTextNode(obj[i].nombre);
+	     		 		nodoApellido = document.createTextNode(obj[i].apellido);
+	     		 		nodoTelefono = document.createTextNode(obj[i].telefono);
+	     		 		nodoFecha = document.createTextNode(obj[i].fecha);
+
+	     		 		/* var persona = obj[i]; Lo mismo pero sin hardcodear tanto
+	     		 		var columns = object.keys(persona);
+	     		 		for(var j=0; j<columns.length;j++)
+	     		 		{
+							var cel = document.createElement("td");
+							var text = document.createTextNode(persona[columns[j]]);
+							cel.appendchild(text);
+							nodoTr.appendChild(cel); Falta el borar que se tendria que hardcodear. Para vos Pellita
+	     		 		}
+						*/
+	     		 		nodoTd1.appendChild(nodoNombre);
+	     		 		nodoTd2.appendChild(nodoApellido);
+	     		 		nodoTd3.appendChild(nodoTelefono);
+	     		 		nodoTd4.appendChild(nodoFecha);
+	     		 		nodoTd5.appendChild(nodoABor);
+	     		 		nodoTd6.appendChild(nodoAMod);
+
+	     		 		nodoTr.appendChild(nodoTd1);
+	     		 		nodoTr.appendChild(nodoTd2);
+	     		 		nodoTr.appendChild(nodoTd3);
+	     		 		nodoTr.appendChild(nodoTd4);
+	     		 		nodoTr.appendChild(nodoTd5);
+	     		 		nodoTr.appendChild(nodoTd6);
+
+
+	     		 		miTabla.appendChild(nodoTr);
+					}
+	  			}
+	  			else
+	  			{
+	  				alert("Error del servidor ", xml.status);
+	  			}
+  			}
+		}
+
+		function Borrar(event)
+		{
+			event.preventDefault();//Previene que se refresque la pagina con el href, le saca el valor por defecto
+			var tagA = event.target;//Devuelve el componente que lanzo el evento
+			var tagTd = tagA.parentNode;
+			var tagTr = tagTd.parentNode;
+			/*var nombre = tagTr.firstElementChild; Datos de la lista que se encuentran en la fila
+			var apellido = nombre.nextElementSibling;
+			var telefono = apellido.nextElementSibling;*/
+			tagTr.parentNode.removeChild(tagTr)
+		}
+
+		function Modificar(event)
+		{
+			event.preventDefault();
+			Abrir('contModificar');
+			var tagA = event.target;
+			var tagTd = tagA.parentNode;
+			var tagTr = tagTd.parentNode;
+			var nombre = tagTr.firstElementChild;
+			var apellido = nombre.nextElementSibling;
+			var telefono = apellido.nextElementSibling;
+			var fecha = telefono.nextElementSibling;
+			var textNombre = document.getElementById("nombreMod");
+			textNombre.placeholder = nombre.innerHTML;
+
+		}
+
+		function listar()
+		{
+			xml.open("GET", "http://localhost:3000/personas", true);
+			xml.onreadystatechange = callback;
+  			xml.send();
+		}
+
+		function Agregar()
+		{
+			var apellido = document.getElementById("apellido").value;
+			var nombre = document.getElementById("nombre").value;
+			var telefono = document.getElementById("telefono").value;
+			var fecha = document.getElementById("fecha").value;
+
+			if(nombre == "")
+			{
+				document.getElementById("nombre").className = "error";
+				alert("Debe ingresar un nombre y un apellido");
+				return;
+			}
+
+			if (apellido == "")
+			{
+				document.getElementById("apellido").className = "error";
+				alert("Debe ingresar un nombre y un apellido");
+				return;
+			}
+
+			if(telefono == "")
+			{
+				document.getElementById("apellido").className = "error";
+				alert("Debe ingresar un nombre y un apellido");
+				return;
+			}
+
+			if(fecha == "")
+			{
+				document.getElementById("apellido").className = "error";
+				alert("Debe ingresar un nombre y un apellido");
+				return;
+			}
+
+			if(confirm("¿Esta seguro que desea agregar una persona"))
+			{
+				document.getElementById("apellido").className = "sinError";
+				document.getElementById("nombre").className = "sinError";
+				document.getElementById("telefono").className = "sinError";
+				document.getElementById("fecha").className = "sinError";
+				var miTabla = document.getElementById("tbody");
+
+				var nodoTr = document.createElement("tr");
+		     	var nodoTd1 = document.createElement("td");
+		     	var nodoTd2 = document.createElement("td");
+		     	var nodoTd3 = document.createElement("td");
+		     	var nodoTd4 = document.createElement("td");
+		     	var nodoTd5 = document.createElement("td");
+		     	var nodoTd6 = document.createElement("td");
+		     	var nodoNombre = document.createTextNode(nombre);
+		     	var nodoApellido = document.createTextNode(apellido);
+		     	var nodoTelefono = document.createTextNode(telefono);
+		     	var nodoFecha = document.createTextNode(fecha);
+		     	var nodoBorrar = document.createTextNode("borrar");
+		     	var nodoModificar = document.createTextNode("Modificar");
+		     	var nodoABor = document.createElement("a");
+		     	var nodoAMod = document.createElement("a");
+
+		     	nodoABor.setAttribute('href', "#");
+		     	nodoABor.addEventListener("click", Borrar);
+		     	nodoABor.appendChild(nodoBorrar);
+
+		     	nodoAMod.setAttribute('href', "#");
+		     	nodoAMod.addEventListener("click", Modificar);
+		     	nodoAMod.appendChild(nodoModificar);
+
+		     	nodoTd1.appendChild(nodoNombre);
+		     	nodoTd2.appendChild(nodoApellido);
+		     	nodoTd3.appendChild(nodoTelefono);
+		     	nodoTd4.appendChild(nodoFecha);
+		      	nodoTd5.appendChild(nodoABor);
+		     	nodoTd6.appendChild(nodoAMod);
+		     	nodoTr.appendChild(nodoTd1);
+		     	nodoTr.appendChild(nodoTd2);
+		     	nodoTr.appendChild(nodoTd3);
+		     	nodoTr.appendChild(nodoTd4);
+		     	nodoTr.appendChild(nodoTd5);
+		     	nodoTr.appendChild(nodoTd6);
+
+		    	miTabla.appendChild(nodoTr);
+			}
+		}
+
+			function Abrir(cont)
+			{
+				var contAgregar = document.getElementById(cont);
+				var btn = document.getElementById("btnAgregar");
+				btn.hidden = true;
+				contAgregar.hidden = false;
+			}
+
+			function Cerrar(cont)
+			{
+				var contAgregar = document.getElementById(cont);
+				var btn = document.getElementById("btnCerrar");
+				var btnAg = document.getElementById("btnAgregar");
+				btn.hidden = false;
+				contAgregar.hidden = true;
+				btnAg.hidden = false;
+			}
+
+		</script>
+		<style>
+			.boton
+			{
+				color: white;
+				background-color: green;
+				width: 225px;
+				height: 50px;
+			}
+			.cerrar
+			{
+				color: white;
+				background-color: red; 
+				width: 9%;
+				padding: 16px;
+				position: absolute;
+				right: 1px;
+				top: 1px;
+			}
+			@keyframes aparecer
+			{
+				from{opacity: 0}
+				to{opacity: 1}
+			}
+			input[type='text']
+			{
+				width: 100%;
+				padding: 12px 20px;
+				display: inline-block;
+				border-radius: 4px;
+				box-sizing: border-box;
+			}
+			th
+			{
+				background-color: lightblue;
+				color: white;
+			}
+			tr:nth-child(even)
+			{
+				background-color: lightgrey;
+			}
+			.tabla
+			{
+				border-collapse: collapse;
+				text-align: left;
+				font-size: 15pt;
+			}
+			.contenedor
+			{
+				position: fixed;
+				width: 50%;
+				border-radius: 5px;
+				background-color: lightgrey;
+				padding: 20px;
+				box-sizing: border-box;
+				margin: 20px auto;
+				left: 25%;
+				top: 100px;
+				animation-name: aparecer;
+				animation-duration: 4s;
+			}
+			.sinError
+			{
+				border: 1px solid #ccc;
+			}
+			.error
+			{
+				border: 1px solid red;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<form class = "contenedor" hidden id="contAgregar">
+			<input type="button" value="x" class="cerrar" id="btnCerrar" onclick="Cerrar('contAgregar')"><br>
+			Nombre<br>
+			<input type="text"  class="sinError" size="40" id="nombre"><br>
+			Apellido<br>
+			<input type="text" placeholder="Tu apellido..." class="sinError" size="40" id="apellido"><br>
+			Telefono<br>
+			<input type="text" placeholder="Tu telefono..." class="sinError" size="40" id="telefono"><br>
+			Frecha<br>
+			<input type="text" placeholder="Tu fecha de nacimiento..." class="sinError" size="40" id="fecha"><br><br>
+			<input type="button" value = "Guardar" onclick="Agregar()" class="boton"><br>
+		</form>
+		<form class = "contenedor" hidden id="contModificar">
+			<input type="button" value="x" class="cerrar" id="btnCerrarMod" onclick="Cerrar('contModificar')"><br>
+			Nombre<br>
+			<input type="text" placeholder="Tu nombre..." class="sinError" size="40" id="nombreMod"><br>
+			Apellido<br>
+			<input type="text" placeholder="Tu apellido..." class="sinError" size="40" id="apellidoMod"><br>
+			Telefono<br>
+			<input type="text" placeholder="Tu telefono..." class="sinError" size="40" id="telefonoMod"><br>
+			Frecha<br>
+			<input type="text" placeholder="Tu fecha de nacimiento..." class="sinError" size="40" id="fechaMod"><br><br>
+			<input type="button" value = "Modificar" class="boton"><br>
+		</form>
+			<input type="button" id="btnAgregar" onclick="Abrir('contAgregar');" value="Agregar">
+			<h2>Lista de personas</h2>
+		<table style="width: 100%"  border = "0" class = "tabla">
+           	<thread>
+            	<th>Nombre</th>
+            	<th>Apellido</th>
+            	<th>Telefono</th>
+            	<th>Fecha</th>
+           		<th>Borrar</th>
+           		<th>Modificar</th>
+           	</thread>
+           	<tbody id = "tbody">
+           		
+           	</tbody>
+         </table>
+	</body>
+</html>
