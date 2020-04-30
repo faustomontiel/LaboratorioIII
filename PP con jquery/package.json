@@ -11,7 +11,7 @@
     "body-parser": "^1.17.2",
     "cors": "^2.8.4",
     "express": "^4.15.4",
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   },
   "devDependencies": {},
   "description": ""
